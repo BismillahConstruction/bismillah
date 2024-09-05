@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bismillah Construction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: #e0e5ec;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background: #e0e5ec;
+            box-shadow: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff;
+            border-radius: 15px;
+            padding: 5px 20px;
+            margin-bottom: 20px;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.5rem;
+        }
+        .navbar-nav .nav-link {
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+            padding: 10px 15px;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #000;
+        }
+        .nav-link.home { color: #ff6f61; }
+        .nav-link.services { color: #6a1b9a; }
+        .nav-link.elevations { color: #2e7d32; }
+        .nav-link.projects { color: #0288d1; }
+        .nav-link.about { color: #fbc02d; }
+        .nav-link.contact { color: #d32f2f; }
+        .navbar-toggler {
+            border: none;
+            background: #e0e5ec;
+            box-shadow: inset 2px 2px 5px #a3b1c6, inset -2px -2px 5px #ffffff;
+            border-radius: 50%;
+        }
+        .navbar-toggler-icon {
+            background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"><path stroke="rgba(0, 0, 0, 0.5)" stroke-width="3" d="M5 7h20M5 15h20M5 23h20"/></svg>');
+        }
+        .navbar-collapse {
+            background: #e0e5ec;
+            box-shadow: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff;
+            border-radius: 15px;
+            margin-top: 10px;
+            padding: 10px;
+        }
+        .nav-item {
+            margin: 0;
+        }
+        @media (max-width: 992px) {
+            .navbar-collapse {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+        }
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('https://picsum.photos/1500/800') no-repeat center center;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: white;
+        }
+        /* Section Headings */
+        .section-heading {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 40px 0;
+            padding: 20px;
+            background: #e0e5ec;
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px #a3b1c6, -5px -5px 15px #ffffff;
+            color: #333;
+        }
+        .section-heading::before {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 5px;
+            background: #333;
+            margin: 0 auto 10px;
+            border-radius: 5px;
+        }
+        /* Services Section */
+        .services {
+            padding: 60px 0;
+        }
+        .services .card {
+            background: #e0e5ec;
+            border: none;
+            box-shadow: 5px 5px 15px #a3b1c6, -5px -5px 15px #ffffff;
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .services .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 10px 10px 20px #a3b1c6, -10px -10px 20px #ffffff;
+        }
+        .services .card-body {
+            text-align: center;
+        }
+        .services .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .services .card-icon {
+            font-size: 2rem;
+            color: #6a1b9a;
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 576px) {
+            .services .card {
+                margin-bottom: 20px;
+            }
+        }
+        /* Elevations Section */
+        .elevations {
+            padding: 60px 0;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px #a3b1c6, -5px -5px 15px #ffffff;
+        }
+        .carousel-indicators [data-bs-target] {
+            background-color: #333;
+            border-radius: 50%;
+        }
+        .carousel-indicators .active {
+            background-color: #000;
+        }
+        /* Carousel Thumbnails */
+.carousel-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Adjust gap for better spacing on small screens */
+    margin-top: 20px;
+    overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
+}
+
+.carousel-thumbnails img {
+    width: 80px; /* Default width for larger screens */
+    height: 60px; /* Default height for larger screens */
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff;
+}
+
+/* Active thumbnail border */
+.carousel-thumbnails img.active {
+    border: 2px solid #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .carousel-thumbnails {
+        gap: 5px; /* Reduced gap on smaller screens */
+    }
+
+    .carousel-thumbnails img {
+        width: 60px; /* Smaller width for tablets and small screens */
+        height: 45px; /* Smaller height for tablets and small screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-thumbnails img {
+        width: 50px; /* Even smaller width for mobile devices */
+        height: 35px; /* Even smaller height for mobile devices */
+    }
+}
+
+        
+        /* Projects Section */
+        .projects {
+            padding: 60px 0;
+        }
+        .projects .card {
+            background: #e0e5ec;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 5px 5px 15px #a3b1c6, -5px -5px 15px #ffffff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .projects .card:hover {
+            transform: scale(1.05);
+            box-shadow: 10px 10px 20px #a3b1c6, -10px -10px 20px #ffffff;
+        }
+        .projects .card-img-top {
+            border-radius: 20px 20px 0 0;
+            transition: opacity 0.3s;
+        }
+        .projects .card:hover .card-img-top {
+            opacity: 0.8;
+        }
+        .projects .card-body {
+            text-align: center;
+        }
+        .projects .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .projects .card-text {
+            color: #666;
+        }
+        
+        @media (max-width: 576px) {
+            .projects .card {
+                margin-bottom: 20px;
+            }
+        }
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Footer Styling */
+.footer-container {
+    padding: 20px;
+    background: #e0e5ec;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff;
+}
+.footer-container h5 {
+    margin-bottom: 20px;
+    color: #333;
+}
+.footer-container p {
+    margin: 10px 0;
+    color: #666;
+}
+.footer-container a {
+    color: #0288d1;
+    text-decoration: none;
+}
+.footer-container a:hover {
+    text-decoration: underline;
+}
+.social-icons {
+    margin-top: 20px;
+}
+.social-icons a {
+    color: #333;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+.social-icons a:hover {
+    color: #000;
+}
+.map-container {
+    margin-top: 20px;
+}
+.map-container iframe {
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px #a3b1c6, -5px -5px 10px #ffffff;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Bismillah Construction</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link home" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link services" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link elevations" href="#elevations">Elevations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link projects" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link about" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link contact" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-heading">Our Premier Services</div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h5 class="card-title">Residential Construction</h5>
+                            <p class="card-text">Expert craftsmanship in building beautiful, functional homes tailored to your needs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-warehouse"></i>
+                            </div>
+                            <h5 class="card-title">Commercial Construction</h5>
+                            <p class="card-text">Innovative solutions for constructing office spaces, retail stores, and more.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h5 class="card-title">Renovations & Repairs</h5>
+                            <p class="card-text">Transform your existing spaces with our renovation and repair services, bringing new life to old structures.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h5 class="card-title">Home Extensions</h5>
+                            <p class="card-text">Expand your living space with expertly designed home extensions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <h5 class="card-title">Industrial Construction</h5>
+                            <p class="card-text">Robust construction solutions for industrial facilities and warehouses.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="fas fa-ship"></i>
+                            </div>
+                            <h5 class="card-title">Marine Construction</h5>
+                            <p class="card-text">Specialized construction for waterfront properties and marine facilities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Elevations Section -->
+    <section id="elevations" class="elevations">
+        <div class="container">
+            <div class="section-heading">Stunning Elevations</div>
+            <div id="elevationsCarousel" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://picsum.photos/1500/800?random=1" class="d-block w-100" alt="Elevation Image 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://picsum.photos/1500/800?random=2" class="d-block w-100" alt="Elevation Image 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://picsum.photos/1500/800?random=3" class="d-block w-100" alt="Elevation Image 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://picsum.photos/1500/800?random=4" class="d-block w-100" alt="Elevation Image 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://picsum.photos/1500/800?random=5" class="d-block w-100" alt="Elevation Image 5">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://picsum.photos/1500/800?random=6" class="d-block w-100" alt="Elevation Image 6">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://picsum.photos/1500/800?random=7" class="d-block w-100" alt="Elevation Image 7">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://picsum.photos/1500/800?random=8" class="d-block w-100" alt="Elevation Image 8">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#elevationsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#elevationsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <div class="carousel-thumbnails">
+                <img src="https://picsum.photos/150/100?random=1" data-bs-target="#elevationsCarousel" data-bs-slide-to="0" class="active" alt="Thumbnail 1">
+                <img src="https://picsum.photos/150/100?random=2" data-bs-target="#elevationsCarousel" data-bs-slide-to="1" alt="Thumbnail 2">
+                <img src="https://picsum.photos/150/100?random=3" data-bs-target="#elevationsCarousel" data-bs-slide-to="2" alt="Thumbnail 3">
+                <img src="https://picsum.photos/150/100?random=4" data-bs-target="#elevationsCarousel" data-bs-slide-to="3" alt="Thumbnail 4">
+                <img src="https://picsum.photos/150/100?random=5" data-bs-target="#elevationsCarousel" data-bs-slide-to="4" alt="Thumbnail 5">
+                <img src="https://picsum.photos/150/100?random=6" data-bs-target="#elevationsCarousel" data-bs-slide-to="5" alt="Thumbnail 6">
+                <img src="https://picsum.photos/150/100?random=7" data-bs-target="#elevationsCarousel" data-bs-slide-to="6" alt="Thumbnail 7">
+                <img src="https://picsum.photos/150/100?random=8" data-bs-target="#elevationsCarousel" data-bs-slide-to="7" alt="Thumbnail 8">
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-heading">Our Recent Projects</div>
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://picsum.photos/400/250?random=1" class="card-img-top" alt="Project Image 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Modern Office Building</h5>
+                            <p class="card-text">A sleek and modern office building with cutting-edge design and sustainable materials.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://picsum.photos/400/250?random=2" class="card-img-top" alt="Project Image 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Luxury Apartment Complex</h5>
+                            <p class="card-text">Elegant and high-end apartments designed for comfort and style.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://picsum.photos/400/250?random=3" class="card-img-top" alt="Project Image 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Residential Renovation</h5>
+                            <p class="card-text">Transforming outdated spaces into modern, functional living areas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="https://picsum.photos/400/250?random=4" class="card-img-top" alt="Project Image 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Retail Store Design</h5>
+                            <p class="card-text">Innovative and attractive retail store design to enhance customer experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- About Section -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="section-heading">About Us</div>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="https://picsum.photos/500/300?random=1" class="img-fluid rounded-3 shadow" alt="About Us Image">
+            </div>
+            <div class="col-md-6">
+                <h2>Who We Are</h2>
+                <p>At Bismillah Construction, we pride ourselves on delivering exceptional construction services with a focus on quality and customer satisfaction. Established with a vision to transform the construction landscape, our team of experts brings a wealth of experience and a commitment to excellence in every project we undertake.</p>
+                <p>Our mission is to build lasting relationships with our clients by providing top-notch construction solutions that meet their needs and exceed their expectations. Whether it’s a residential, commercial, or industrial project, we approach each one with the same dedication and professionalism that has become our hallmark.</p>
+                <p>From innovative designs to precise execution, Bismillah Construction is your trusted partner in creating spaces that are not only functional but also reflect your vision and aspirations.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+<section id="contact" class="footer-container">
+    <div class="container">
+        <div class="section-heading">Contact Us</div>
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Email</h5>
+                <p><a href="mailto:info@bismillahconstruction.com"><i class="fas fa-envelope"></i> info@bismillahconstruction.com</a></p>
+            </div>
+            <div class="col-md-6">
+                <h5>Phone</h5>
+                <p><a href="tel:+1234567890"><i class="fas fa-phone"></i>+91 9597789041</a></p>
+            </div>
+            <div class="col-md-12">
+                <h5>Address</h5>
+                <p>79/48, Mugalpura St, Tiruvennanallur, Tiruvannamalai, Tamil Nadu 606601, India</p>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="#" class="fab fa-facebook-f" title="Facebook"></a>
+            <a href="#" class="fab fa-twitter" title="Twitter"></a>
+            <a href="#" class="fab fa-linkedin-in" title="LinkedIn"></a>
+            <a href="#" class="fab fa-instagram" title="Instagram"></a>
+        </div>
+        <!-- Embed Google Map -->
+        <div class="map-container mt-4">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3801.896272074618!2d79.12700521418154!3d12.23370925604594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a558f9b5e4c0715%3A0x818e29e2a1ea1c8!2s79%2F48%2C%20Mugalpura%20St%2C%20Tiruvennanallur%2C%20Tiruvannamalai%2C%20Tamil%20Nadu%20606601%2C%20India!5e0!3m2!1sen!2sin!4v1693709171096!5m2!1sen!2sin" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+    
+</section>
+
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
